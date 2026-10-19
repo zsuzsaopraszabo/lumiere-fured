@@ -25,6 +25,7 @@
   --lake:#2D5A60;       /* deep Balaton glass */
   --champagne:#A88B5C;
   --on-photo:#FBFBF8;
+  --sea:#DCE5E4; --land:#F4F4F0; --water:#A9C3C4; --hu:#E6DCC8;
   --veil:rgba(12,16,18,.42);
   --c-oliva:#5F6A45; --c-ambra:#99572F; --c-aurum:#9A7A40; --c-perla:#A8837A;
   --f-display:"Bodoni Moda","Didot","Bodoni 72","Times New Roman",serif;
@@ -35,11 +36,11 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --paper:#111416;--paper-2:#1A1E21;--ink:#ECEDE8;--ink-soft:#A6ADB0;--rule:#2E3438;
-  --lake:#8CB6BA;--champagne:#C9AE7E;--veil:rgba(6,8,9,.5);
+  --lake:#8CB6BA;--champagne:#C9AE7E;--veil:rgba(6,8,9,.5);--sea:#16242A;--land:#1D2225;--water:#2D5158;--hu:#3A3428;
   --c-oliva:#A9B486;--c-ambra:#D79A72;--c-aurum:#D6B677;--c-perla:#D9B3AA;color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#111416;--paper-2:#1A1E21;--ink:#ECEDE8;--ink-soft:#A6ADB0;--rule:#2E3438;
-  --lake:#8CB6BA;--champagne:#C9AE7E;--veil:rgba(6,8,9,.5);
+  --lake:#8CB6BA;--champagne:#C9AE7E;--veil:rgba(6,8,9,.5);--sea:#16242A;--land:#1D2225;--water:#2D5158;--hu:#3A3428;
   --c-oliva:#A9B486;--c-ambra:#D79A72;--c-aurum:#D6B677;--c-perla:#D9B3AA;color-scheme:dark}
 
 *{box-sizing:border-box}
@@ -213,14 +214,23 @@ footer .inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
 .vsub{display:flex;justify-content:space-between;gap:20px 40px;flex-wrap:wrap;align-items:end;margin-top:20px}
 .vsub .tagline{font-family:var(--f-display);font-style:italic;font-size:clamp(22px,2.6vw,34px);max-width:26ch;line-height:1.15}
 
-.facts-strip{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:1px solid var(--rule)}
-.facts-strip>div{padding:22px 16px 22px 0;min-width:0}
-.facts-strip>div+div{padding-left:16px;border-left:1px solid var(--rule)}
-.facts-strip .k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--ink-soft)}
+.facts-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));border-bottom:1px solid var(--rule);overflow:hidden}
+.facts-strip>div{padding:20px 16px;min-width:0;box-shadow:-1px 0 0 var(--rule),0 1px 0 var(--rule)}
+.facts-strip .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--ink-soft)}
 .facts-strip .v{font-family:var(--f-display);font-size:clamp(28px,3vw,40px);line-height:1.1;margin-top:4px}
+.facts-strip .v.sm{font-size:clamp(20px,2vw,26px);margin-top:10px}
 .facts-strip .v small{font-family:var(--f-body);font-size:14px;margin-left:3px}
-@media (max-width:900px){.facts-strip{grid-template-columns:repeat(3,1fr)}.facts-strip>div:nth-child(4){border-left:0;padding-left:0}.facts-strip>div:nth-child(-n+3){border-bottom:1px solid var(--rule)}}
-@media (max-width:480px){.facts-strip{grid-template-columns:1fr 1fr}.facts-strip>div:nth-child(n){border-left:0;padding-left:0}.facts-strip>div:nth-child(2n){padding-left:16px;border-left:1px solid var(--rule)}.facts-strip>div{border-bottom:1px solid var(--rule)}}
+.facts-strip .n{font-size:12.5px;color:var(--ink-soft);margin-top:2px}
+.ub{border-left:2px solid var(--accent);padding-left:clamp(18px,3vw,36px)}
+.ub .eyebrow{color:var(--accent)}
+.ub ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:6px}
+.ub li{font-family:var(--f-display);font-size:clamp(24px,3vw,38px);line-height:1.2}
+.uniq{margin-top:16px;border-left:2px solid var(--accent);padding:2px 0 2px 16px}
+.uniq .eyebrow{color:var(--accent);font-size:10.5px}
+.uniq ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:2px}
+.uniq li{font-family:var(--f-display);font-size:19px;line-height:1.3}
+table.cmp .uq{font-family:var(--f-display);font-size:17px;line-height:1.35;display:block}
+table.cmp .muted{color:var(--ink-soft);font-size:13px}
 
 .story{display:grid;grid-template-columns:4fr 8fr;gap:clamp(28px,6vw,96px)}
 .story h2{font-size:clamp(36px,4.6vw,64px)}
@@ -279,6 +289,45 @@ footer .inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
 .ctaband .btn{color:var(--paper);border-color:var(--paper)}
 .ctaband .btn:hover{background:var(--paper);color:var(--ink)}
 
+/* map */
+.map{display:grid;gap:18px}
+.mapsteps{display:flex;gap:0;border-top:1px solid var(--ink);overflow-x:auto;scrollbar-width:none}
+.mapsteps button{font:inherit;background:transparent;border:0;border-bottom:1px solid var(--rule);color:var(--ink-soft);padding:14px 18px 12px 0;margin-right:18px;cursor:pointer;text-align:left;white-space:nowrap;display:grid;gap:2px}
+.mapsteps button .i{font-family:var(--f-display);font-style:italic;font-size:15px;color:var(--champagne)}
+.mapsteps button .t{font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase}
+.mapsteps button[aria-selected="true"]{color:var(--ink);border-bottom:2px solid var(--ink)}
+.mapstage{position:relative;background:var(--sea);overflow:hidden;border:1px solid var(--rule)}
+.mapstage svg{display:block;width:100%;height:auto;touch-action:pan-y}
+.mapfoot{display:grid;grid-template-columns:1fr auto;gap:16px 32px;align-items:start}
+.mapcap h3{font-size:clamp(26px,3vw,38px);margin-bottom:6px}
+.mapcap h3 i{font-style:italic}
+.mapcap p{color:var(--ink-soft);font-size:16px;max-width:62ch}
+.mapnav{display:flex;gap:8px}
+.mapnav .btn:disabled{opacity:.35;cursor:default}
+.mapnote{font-size:11.5px;color:var(--ink-soft)}
+.mapnote a{color:inherit}
+@media (max-width:700px){.mapfoot{grid-template-columns:1fr}}
+.m-country{fill:var(--land);stroke:var(--rule);stroke-width:.7}
+.m-hu{fill:var(--hu);stroke:var(--champagne);stroke-width:1.2}
+.m-lake{fill:var(--water);stroke:none}
+.m-res{fill:none;stroke:var(--rule);stroke-width:1;stroke-linecap:round}
+.m-maj{fill:none;stroke:var(--ink-soft);stroke-width:1.6;stroke-linecap:round}
+.m-rail{fill:none;stroke:var(--ink-soft);stroke-width:1;stroke-dasharray:4 3}
+.m-droad{fill:none;stroke:var(--paper);stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.m-droadc{fill:none;stroke:var(--rule);stroke-width:9;stroke-linecap:round;stroke-linejoin:round}
+.m-track{fill:none;stroke:var(--ink-soft);stroke-width:1;stroke-dasharray:3 3}
+.m-bld{fill:var(--rule);stroke:none}
+.m-plot{fill:var(--champagne);fill-opacity:.22;stroke:var(--champagne);stroke-width:1.5;stroke-dasharray:5 4}
+.m-pin{fill:var(--champagne);stroke:var(--paper);stroke-width:2}
+.m-pulse{fill:none;stroke:var(--champagne);stroke-width:1.5}
+.m-lbl{font-family:var(--f-body);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;fill:var(--ink-soft);paint-order:stroke;stroke:var(--land);stroke-width:3px;stroke-linejoin:round}
+.m-lbl.big{font-family:var(--f-display);font-size:22px;letter-spacing:.02em;text-transform:none;font-style:italic;fill:var(--ink)}
+.m-lbl.water{font-family:var(--f-display);font-style:italic;font-size:26px;letter-spacing:.04em;text-transform:none;fill:var(--lake);stroke-width:0}
+.m-lbl.street{font-size:11px;letter-spacing:.06em;text-transform:none;font-weight:400}
+.m-lbl.site{font-family:var(--f-display);font-size:18px;letter-spacing:.04em;text-transform:none;fill:var(--ink)}
+.m-dot{fill:var(--ink-soft)}
+@media (prefers-reduced-motion: reduce){.m-pulse{display:none}}
+
 /* lightbox */
 .lb[hidden]{display:none!important}
 .lb{position:fixed;inset:0;z-index:100;background:rgba(8,10,11,.94);display:grid;grid-template-rows:auto 1fr auto;padding:calc(env(safe-area-inset-top,0px) + 12px) max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 14px) max(16px,env(safe-area-inset-left,0px));color:#F2F2EE}
@@ -316,7 +365,7 @@ footer .inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
     <div class="inner">
       <div class="menu-top"><span class="logo">Lumière <i>Füred</i></span><button class="menubtn" id="menuclose">Bezárás ✕</button></div>
       <div class="menu-grid" id="menugrid"></div>
-      <div class="menu-links"><a href="#top">Főoldal</a><a href="#hely">A helyszín</a><a href="#kozos">A közös nyelv</a><a href="#osszevetes">Összevetés</a><a href="#offplan">Off-plan</a><a href="#kapcsolat">Bemutató kérése</a></div>
+      <div class="menu-links"><a href="#top">Főoldal</a><a href="#hely">A helyszín</a><a href="#terkep">Térkép</a><a href="#kozos">A közös nyelv</a><a href="#osszevetes">Összevetés</a><a href="#offplan">Off-plan</a><a href="#kapcsolat">Bemutató kérése</a></div>
     </div>
   </div>
 </div>
@@ -336,6 +385,8 @@ footer .inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
   <div class="ctrl"><button id="lbprev">← Előző</button><span id="lbcount" class="num" style="align-self:center;font-size:13px;letter-spacing:.14em"></span><button id="lbnext">Következő →</button></div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="mapdata.js"></script>
 <script>
 const PROJECT = "Lumière Füred";
 const CONTACT = { firm:"Amatrine HOME", phone:"+36 30 082 9252", email:"zsuzsa@amatrine.eu", web:"https://www.amatrine.eu" };
@@ -353,7 +404,8 @@ const VILLAS = [
      "A lépcső pihenőjéről nyílik az első lakosztály saját fürdővel. Lent, a kerti szinten két további hálószoba kapott helyet, mindkettő gardróbbal, saját fürdővel és közvetlen teraszkapcsolattal. A belsőépítészeti terv olajzöld bársonnyal, márványmintás felületekkel és bronz részletekkel dolgozik."
    ],
    highlights:["Kétszintes belmagasság üvegoromzattal","Biokandalló a nappaliban","3 hálószoba, mindegyik saját fürdővel","Gardrób mindkét kerti szinti hálóhoz","Két teraszszint, összesen 90 m²","Saját medence a kertben"],
-   facts:{area:"208", plot:"861", beds:"3", baths:"3", terr:"90", levels:"3 szint"},
+   facts:{area:"208", plot:"861", beds:"3", baths:"3", terr:"90", levels:"3 szint", garage:"34"},
+   unique:["Az egyetlen háromszintes, osztott szintes elrendezés","23,8 m²-es galéria a nappali fölött, az üvegoromzat alatt","Olajzöld, kő és bronz belső világ"],
    levels:[
      {name:"Földszint és félszint", total:"138,76", rooms:[["Nappali · étkező · konyha","41,98"],["Galéria / tetőtér","23,76"],["Hálószoba","14,26"],["Fürdő","4,35"],["Közlekedő","12,95"],["Előtér","5,61"],["Vendég WC","1,62"],["Garázs, 2 állás","34,23"]]},
      {name:"Kerti szint", total:"69,47", rooms:[["Hálószoba","19,66"],["Hálószoba","14,90"],["Gardrób","6,90"],["Fürdő","5,18"],["Fürdő","4,78"],["Mosókonyha","4,61"],["Gépészet","6,62"],["Közlekedő","6,82"]]},
@@ -370,7 +422,8 @@ const VILLAS = [
      "A földszinten egy vendéglakosztály, lent pedig három további szoba kapott helyet, mindegyik gardróbbal, saját fürdővel és déli terasszal. A belsőépítészeti terv konyakbarna bőrt, szürke erezett márványt és meleg tónusú fát használ. A sötét kőfal előtt álló étkezőasztal a ház szíve."
    ],
    highlights:["4 hálószoba-lakosztály, 4 fürdő","Vendéglakosztály a földszinten","Két teraszszint kültéri lépcsővel","15 m²-es tároló és külön mosókonyha","Belmagas nappali fa mennyezettel","Saját medence a kertben"],
-   facts:{area:"227", plot:"863", beds:"4", baths:"4", terr:"100", levels:"2 szint"},
+   facts:{area:"227", plot:"863", beds:"4", baths:"4", terr:"100", levels:"2 szint", garage:"35"},
+   unique:["4 hálószoba, mindegyik saját fürdőszobával: a legtöbb a kollekcióban","Külön vendéglakosztály a földszinten","15 m²-es tároló és külön mosókonyha"],
    levels:[
      {name:"Földszint", total:"108,92", rooms:[["Konyha · étkező","24,64"],["Nappali","15,29"],["Hálószoba","11,60"],["Gardrób","5,78"],["Fürdő","4,38"],["Előszoba","4,80"],["Zsilip","3,31"],["WC","1,99"],["Közlekedő","2,27"],["Garázs, 2 állás","34,86"]]},
      {name:"Kerti szint", total:"127,03", rooms:[["Hálószoba I.","14,38"],["Hálószoba II.","15,12"],["Hálószoba III.","14,95"],["Fürdő I.","5,23"],["Fürdő II.","3,97"],["Fürdő III.","6,46"],["Gardrób","3,90"],["Gardrób","4,36"],["Tároló","15,24"],["Mosókonyha","7,31"],["Gépészet","13,49"],["Közlekedő és lépcső","22,62"]]},
@@ -387,7 +440,8 @@ const VILLAS = [
      "Lent balra a mesterlakosztály: közel 19 m²-es háló, két külön gardrób és 9 m²-es fürdő. Jobbra két további hálószoba közös, tágas fürdővel. A belsőépítészeti terv pezsgő- és aranytónusokra, szoborszerű csillárokra, márványszigetre és krémszínű bútorokra épül."
    ],
    highlights:["Beépített lift a két szint között","Mesterlakosztály két gardróbbal","40 m²-es egylégterű nappali","Tolóajtók mindkét szinten","Kamra és zsilipes garázs-kapcsolat","Saját medence, külön medencegépészettel"],
-   facts:{area:"234", plot:"863", beds:"3", baths:"2", terr:"89", levels:"2 szint · lift"},
+   facts:{area:"234", plot:"863", beds:"3", baths:"2", terr:"89", levels:"2 szint · lift", garage:"34"},
+   unique:["Beépített lift a két szint között","Mesterlakosztály két gardróbbal (22 m²) és 9 m²-es fürdővel","A legnagyobb hasznos alapterület: 234 m²"],
    levels:[
      {name:"Földszint", total:"104,36", rooms:[["Nappali · étkező · konyha","40,17"],["Közlekedő","14,40"],["Lépcsőtér","6,75"],["Lift","2,90"],["Kamra","2,09"],["Zsilip","2,29"],["Vendég WC","1,58"],["Garázs, 2 állás","34,18"]]},
      {name:"Kerti szint", total:"141,87", rooms:[["Mesterháló","18,72"],["Gardrób","14,33"],["Gardrób","8,06"],["Fürdő (mester)","9,00"],["Hálószoba","12,03"],["Hálószoba","12,03"],["Fürdő","10,59"],["Közlekedő","33,93"],["Lépcsőtér","7,86"],["Medencegépészet","15,32"]]},
@@ -404,7 +458,8 @@ const VILLAS = [
      "Az emeleten egy kis társalgó fogadja a lépcsőn érkezőt. Innen nyílik a szülői blokk: 18,5 m²-es háló, 11 m²-es gardrób és saját fürdő. Mellette két további szoba közös fürdővel. Mindhárom szoba délkeleti tájolású, saját teraszkapcsolattal. A belsőépítészeti terv gyöngyház-krém, rózsaarany és puha textúrák nyugalmára épül."
    ],
    highlights:["Emeleti hálók délkeleti teraszokkal","55 m²-es nappali és konyha-étkező","Szülői blokk 11 m²-es gardróbbal","Fa-alu nyílászárók","A legnagyobb garázs: 39,5 m²","Saját medence, kőburkolatú teraszokkal"],
-   facts:{area:"225", plot:"863", beds:"3", baths:"2", terr:"115", levels:"2 szint"},
+   facts:{area:"225", plot:"863", beds:"3", baths:"2", terr:"115", levels:"2 szint", garage:"39,5"},
+   unique:["Az egyetlen emeletes ház: a hálószobák fent, az ég felé","A legnagyobb nappali–étkező (55 m²) és a legtöbb terasz (115 m²)","Fa-alu nyílászárók és a legnagyobb garázs (39,5 m²)"],
    levels:[
      {name:"Földszint", total:"135,95", rooms:[["Nappali","30,83"],["Konyha · étkező","23,80"],["Előtér","11,00"],["Fedett előtér","5,60"],["Lépcső","11,04"],["Közlekedő","5,32"],["Kamra","2,55"],["Gardrób","2,78"],["WC","3,53"],["Garázs, 2 állás","39,50"]]},
      {name:"Emelet", total:"88,89", rooms:[["Szülői háló","18,50"],["Gardrób","11,07"],["Fürdő I.","5,86"],["Hálószoba","12,81"],["Hálószoba","12,00"],["Fürdő II.","4,86"],["Társalgó","8,94"],["Lépcső és közlekedő","14,85"]]},
@@ -451,7 +506,8 @@ function card(v){
     <div class="ph"><img src="${v.cover}" alt="Villa ${v.name} nappali, látványterv" loading="lazy"><span class="no">Villa ${v.house - 2} / 4 · Hrsz. ${v.hrsz}</span></div>
     <div class="meta"><h3><small>Villa</small>${v.name}</h3><span class="tag">${v.cardTag}</span></div>
     <p style="margin-top:12px;font-size:16px;color:var(--ink-soft);max-width:48ch">${v.tagline}.</p>
-    <div class="facts num"><span><b>${v.facts.area} m²</b> hasznos</span><span><b>${v.facts.beds}</b> háló</span><span><b>${v.facts.baths}</b> fürdőszoba + vendég-WC</span><span><b>${v.facts.terr} m²</b> terasz</span></div>
+    <div class="uniq"><span class="eyebrow">Csak ebben a villában</span><ul>${v.unique.map(u=>`<li>${u}</li>`).join("")}</ul></div>
+    <div class="facts num"><span><b>${v.facts.area} m²</b> hasznos alapterület</span><span><b>${v.facts.beds}</b> hálószoba</span><span><b>${v.facts.baths}</b> fürdőszoba</span><span><b>1</b> vendég-WC</span><span><b>${v.facts.terr} m²</b> terasz</span></div>
     <span class="more">A villa bemutatása</span>
   </a>`;
 }
@@ -459,13 +515,14 @@ function card(v){
 function home(){
   const cmpRows = [
     ["Karakter", v=>v.tagline],
-    ["Hasznos terület", v=>v.facts.area+" m²"],
+    ["Csak ebben a villában", v=>`<span class="uq" style="color:${v.color}">${v.unique.join("<br>")}</span>`],
+    ["Hasznos alapterület", v=>v.facts.area+" m²<br><span class='muted'>ebből garázs "+v.facts.garage+" m²</span>"],
     ["Telek", v=>v.facts.plot+" m²"],
-    ["Hálószobák", v=>v.facts.beds],
-    ["Fürdőszobák", v=>v.facts.baths+" + külön vendég-WC"],
-    ["Teraszok", v=>"≈ "+v.facts.terr+" m²"],
+    ["Hálószoba", v=>v.facts.beds],
+    ["Fürdőszoba", v=>v.facts.baths],
+    ["Vendég-WC", ()=>"1, külön"],
+    ["Terasz", v=>"≈ "+v.facts.terr+" m²"],
     ["Szintek", v=>v.facts.levels],
-    ["Különlegesség", v=>v.highlights[0]],
     ["Ár", ()=>"Kérésre, a bemutatón"]
   ];
   return `
@@ -503,6 +560,22 @@ function home(){
     <div class="inner spread">
       <figure><img src="${img(4,"ext",10)}" alt="A villák a domboldalon, madártávlat" loading="lazy"><figcaption>A domboldal madártávlatból · látványterv</figcaption></figure>
       <figure><img src="${img(3,"int",2)}" alt="Üvegoromzatos nappali kilátással" loading="lazy" style="aspect-ratio:4/5"><figcaption>Villa Oliva · nappali az üvegoromzat alatt</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="s wrap rule-top" id="terkep">
+    <div class="inner">
+      <div class="kicker"><span class="eyebrow">A térkép</span><span class="line"></span></div>
+      <div class="galhead"><h2>Európától <i>a Kilátó utcáig.</i></h2><p>Kattintson a lépésekre: a térkép a kontinenstől a telkekig közelít.</p></div>
+      <div class="map">
+        <div class="mapsteps" role="tablist" id="mapsteps"></div>
+        <div class="mapstage"><svg id="mapsvg" role="img" aria-label="Lumière Füred helyszíne a térképen"></svg></div>
+        <div class="mapfoot">
+          <div class="mapcap" id="mapcap" aria-live="polite"></div>
+          <div class="mapnav"><button class="btn" id="mapprev">← Távolabb</button><button class="btn solid" id="mapnext">Közelebb →</button></div>
+        </div>
+        <p class="mapnote">Térképadatok: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> közreműködők, Natural Earth. A távolságok légvonalban értendők. A telkek jelölése tájékoztató jellegű.</p>
+      </div>
     </div>
   </section>
 
@@ -589,12 +662,20 @@ function villa(v){
 
   <section class="wrap" style="--accent:${v.color}">
     <div class="inner facts-strip num">
-      <div><div class="k">Hasznos terület</div><div class="v">${v.facts.area}<small>m²</small></div></div>
+      <div><div class="k">Hasznos alapterület</div><div class="v">${v.facts.area}<small>m²</small></div><div class="n">garázzsal együtt</div></div>
       <div><div class="k">Telek</div><div class="v">${v.facts.plot}<small>m²</small></div></div>
       <div><div class="k">Hálószoba</div><div class="v">${v.facts.beds}</div></div>
-      <div><div class="k">Fürdőszoba</div><div class="v">${v.facts.baths}<small>+ vendég-WC</small></div></div>
+      <div><div class="k">Fürdőszoba</div><div class="v">${v.facts.baths}</div></div>
+      <div><div class="k">Vendég-WC</div><div class="v">1</div><div class="n">külön</div></div>
       <div><div class="k">Terasz</div><div class="v">${v.facts.terr}<small>m²</small></div></div>
-      <div><div class="k">Szintek</div><div class="v" style="font-size:clamp(22px,2.2vw,30px)">${v.facts.levels}</div></div>
+      <div><div class="k">Szintek</div><div class="v sm">${v.facts.levels}</div></div>
+    </div>
+  </section>
+
+  <section class="wrap" style="--accent:${v.color};padding-top:clamp(36px,5vw,64px)">
+    <div class="inner ub">
+      <span class="eyebrow">Csak ebben a villában</span>
+      <ul>${v.unique.map(u=>`<li>${u}</li>`).join("")}</ul>
     </div>
   </section>
 
@@ -648,6 +729,138 @@ function villa(v){
   ${contactSection()}`;
 }
 
+/* ---------- map ---------- */
+const SITE=[17.8831,46.9667];
+const MAP_STEPS=[
+ {t:"Európa", bb:[-10.5,35.5,32,61.5], h:"Közép-Európa <i>szívében</i>", p:"Légvonalban Bécs 179 km, Zágráb 194 km, Budapest 105 km."},
+ {t:"Magyarország", bb:[16.05,45.7,22.95,48.6], h:"A Balaton <i>északi partján</i>", p:"Budapesttől 105 km-re. A Hévíz–Balaton repülőtér 63 km, a budapesti Liszt Ferenc repülőtér 116 km légvonalban."},
+ {t:"Balaton", bb:[17.2,46.68,18.2,47.1], h:"Balatonfüred, <i>Tihany szomszédságában</i>", p:"Az északi part fürdővárosa. A Tihanyi-félsziget légvonalban 6 km, a tó túlpartján Siófok."},
+ {t:"Balatonfüred", bb:[17.835,46.918,17.93,46.99], h:"A város fölött, <i>a tóra kacsintva</i>", p:"A parttól 1,7 km-re légvonalban, a Tamás-hegy oldalában, nagyjából 80 méterrel a tó tükre felett."},
+ {t:"A telkek", bb:[17.8755,46.9638,17.8895,46.9728], h:"A Kilátó utca <i>végén</i>", p:"Négy telek, egyenként 861–863 m², a Tamás-hegyi kereszt mellett, 600 m-re a Jókai-kilátótól. Délkeleti tájolás, a Balaton felé."}
+];
+const MAP_LABELS=[
+ {n:"Magyarország",c:[20.3,47.0],a:1,b:1,cls:"big"},
+ {n:"Budapest",c:[19.0402,47.4979],a:1,b:1,dot:1},
+ {n:"Bécs",c:[16.3738,48.2082],a:1,b:1,dot:1},
+ {n:"Zágráb",c:[15.9819,45.815],a:1,b:1,dot:1},
+ {n:"Varsó",c:[21.0122,52.2297],a:0,b:0,dot:1},
+ {n:"Párizs",c:[2.3522,48.8566],a:0,b:0,dot:1},
+ {n:"Prága",c:[14.4378,50.0755],a:0,b:0,dot:1},
+ {n:"Róma",c:[12.4964,41.9028],a:0,b:0,dot:1},
+ {n:"München",c:[11.582,48.1351],a:0,b:0,dot:1},
+ {n:"Balaton",c:[17.62,46.76],a:1,b:2,cls:"water"},
+ {n:"Hévíz–Balaton repülőtér",c:[17.159,46.686],a:1,b:1,dot:1},
+ {n:"Tihany",c:[17.889,46.9136],a:2,b:3,dot:1},
+ {n:"Balatonfüred",c:[17.975,46.995],a:2,b:2,dot:0,cls:"big"},
+ {n:"Siófok",c:[18.0485,46.9087],a:2,b:2,dot:1},
+ {n:"Keszthely",c:[17.2482,46.7657],a:2,b:2,dot:1},
+ {n:"Badacsony",c:[17.4919,46.7984],a:2,b:2,dot:1},
+ {n:"Balatonfüred",c:[17.892,46.955],a:3,b:3,cls:"big"},
+ {n:"Balaton",c:[17.912,46.93],a:3,b:3,cls:"water"},
+ {n:"Jókai-kilátó",c:[17.88148,46.97191],a:3,b:4,dot:1},
+ {n:"Tamás-hegyi kereszt",c:[17.88173,46.96734],a:4,b:4,dot:1,left:1},
+ {n:"Kilátó utca",c:[17.8796,46.96585],a:4,b:4,cls:"street"},
+ {n:"Tamáshegyi út",c:[17.8858,46.9683],a:4,b:4,cls:"street"},
+ {n:"Tamási Áron utca",c:[17.8812,46.9647],a:4,b:4,cls:"street"},
+ {n:"Öreghegyi utca",c:[17.8768,46.9672],a:4,b:4,cls:"street"}
+];
+function initMap(){
+  const svgEl=document.getElementById("mapsvg"); if(!svgEl) return;
+  const steps=document.getElementById("mapsteps"), cap=document.getElementById("mapcap");
+  steps.innerHTML=MAP_STEPS.map((s,i)=>`<button role="tab" aria-selected="${i===0}" data-step="${i}"><span class="i">${["i.","ii.","iii.","iv.","v."][i]}</span><span class="t">${s.t}</span></button>`).join("");
+  const M=window.LF_MAP;
+  if(!window.d3||!M){ cap.innerHTML=`<h3>Balatonfüred, <i>Kilátó utca</i></h3><p>A térkép most nem tölthető be. A telkek a Kilátó utca keleti végén, a Tamás-hegyi kereszt mellett találhatók.</p>`; return; }
+  const svg=d3.select(svgEl);
+  let W=1000,H=620,scaleTxt=1;
+  const P0=d3.geoMercator().scale(1).translate([0,0]);
+  const proj=d3.geoMercator(); const path=d3.geoPath(proj);
+  const fix=f=>{ if(d3.geoArea(f)>2*Math.PI){ const g=f.geometry; if(g.type==="Polygon") g.coordinates=g.coordinates.map(r=>r.slice().reverse()); else g.coordinates=g.coordinates.map(p=>p.map(r=>r.slice().reverse())); } return f; };
+  const close=r=>{const a=r[0],b=r[r.length-1]; return (a[0]===b[0]&&a[1]===b[1])?r:r.concat([a]);};
+  const poly=rings=>fix({type:"Feature",geometry:{type:"Polygon",coordinates:rings}});
+  const countries=M.eu.map(c=>fix({type:"Feature",geometry:{type:"MultiPolygon",coordinates:c.p.map(r=>[close(r)])}}));
+  const hu=poly([close(M.hu)]), lakeC=poly([close(M.lakeC)]), lakeF=poly([close(M.lake)]);
+  const ml=a=>({type:"MultiLineString",coordinates:a});
+  const blds=M.bld.filter(r=>r.length>3).map(r=>poly([close(r)]));
+  const plot=d3.geoCircle().center(SITE).radius(0.00045)();
+  const g=svg.append("g");
+  const L={
+    countries:g.append("g").selectAll("path").data(countries).join("path").attr("class","m-country"),
+    hu:g.append("path").datum(hu).attr("class","m-hu"),
+    lakeC:g.append("path").datum(lakeC).attr("class","m-lake"),
+    lakeF:g.append("path").datum(lakeF).attr("class","m-lake"),
+    res:g.append("path").datum(ml(M.res)).attr("class","m-res"),
+    rail:g.append("path").datum(ml(M.rail)).attr("class","m-rail"),
+    maj:g.append("path").datum(ml(M.maj)).attr("class","m-maj"),
+    tracks:g.append("path").datum(ml(M.dtracks)).attr("class","m-track"),
+    droadc:g.append("path").datum(ml(M.droads)).attr("class","m-droadc"),
+    droad:g.append("path").datum(ml(M.droads)).attr("class","m-droad"),
+    bld:g.append("g").selectAll("path").data(blds).join("path").attr("class","m-bld"),
+    plot:g.append("path").datum(plot).attr("class","m-plot")
+  };
+  const lg=svg.append("g");
+  const labels=lg.selectAll("g").data(MAP_LABELS).join("g");
+  const inner=labels.append("g");
+  inner.filter(d=>d.dot).append("circle").attr("r",3).attr("class","m-dot");
+  inner.append("text").attr("class",d=>"m-lbl "+(d.cls||"")).attr("x",d=>d.left?-7:(d.dot?7:0)).attr("y",d=>d.dot?4:0).attr("text-anchor",d=>d.left?"end":(d.dot?"start":"middle")).text(d=>d.n);
+  const site=svg.append("g"), siteIn=site.append("g");
+  const pulse=siteIn.append("circle").attr("class","m-pulse").attr("r",8);
+  siteIn.append("circle").attr("class","m-pin").attr("r",7);
+  const siteT=siteIn.append("text").attr("class","m-lbl site").attr("x",14).attr("y",-12).text("Lumière Füred");
+  const views=MAP_STEPS.map(st=>{const a=P0([st.bb[0],st.bb[3]]), b=P0([st.bb[2],st.bb[1]]); return {cx:(a[0]+b[0])/2, cy:(a[1]+b[1])/2, bw:b[0]-a[0], bh:b[1]-a[1]};});
+  const vw=v=>[v.cx,v.cy,Math.max(v.bw, v.bh*W/H)*1.04];
+  let cur=null, step=0, timer=null;
+  const sm=(e0,e1,x)=>{const t=Math.max(0,Math.min(1,(x-e0)/(e1-e0)));return t*t*(3-2*t);};
+  function render(v){
+    const k=W/v[2]; proj.scale(k).translate([W/2-k*v[0],H/2-k*v[1]]).clipExtent([[-40,-40],[W+40,H+40]]);
+    const lv=views.map(x=>Math.log(W/vw(x)[2])), lk=Math.log(k);
+    let lvl=0; for(let i=0;i<4;i++){ if(lk>=lv[i]) lvl=i+Math.min(1,(lk-lv[i])/(lv[i+1]-lv[i])); }
+    L.countries.attr("d",path); L.hu.attr("d",path);
+    const fine=sm(2.2,2.8,lvl), town=sm(2.5,3,lvl), det=sm(3.4,3.9,lvl);
+    L.lakeC.attr("d",fine<1?path:null).style("opacity",1-fine);
+    L.lakeF.attr("d",fine>0?path:null).style("opacity",fine);
+    L.res.attr("d",town>0?path:null).style("opacity",town*(1-det*.6));
+    L.rail.attr("d",town>0?path:null).style("opacity",town*.6);
+    L.maj.attr("d",town>0?path:null).style("opacity",town*.7);
+    for(const key of ["tracks","droadc","droad"]) L[key].attr("d",det>0?path:null).style("opacity",det*(key==="tracks"?.5:1));
+    L.bld.attr("d",det>0?path:null).style("opacity",det*.9);
+    L.plot.attr("d",det>0?path:null).style("opacity",det);
+    labels.attr("transform",d=>{const p=proj(d.c);return `translate(${p[0]},${p[1]})`;})
+      .style("opacity",d=>{const lo=d.a-0.5, hi=d.b+0.5; return Math.min(sm(lo-0.3,lo+0.1,lvl), 1-sm(hi-0.1,hi+0.3,lvl));})
+      .style("display",d=>(lvl<d.a-0.9||lvl>d.b+0.9)?"none":null);
+    const sp=proj(SITE); site.attr("transform",`translate(${sp[0]},${sp[1]})`);
+    siteT.style("opacity",sm(2.6,3.2,lvl));
+    cur=v;
+  }
+  function size(){
+    const w=svgEl.getBoundingClientRect().width||1000;
+    W=1000; H=w<600?1250:620;
+    scaleTxt=Math.max(1,1000/w)*(w<600?0.95:1);
+    svg.attr("viewBox",`0 0 ${W} ${H}`);
+    inner.attr("transform",`scale(${scaleTxt})`); siteIn.attr("transform",`scale(${scaleTxt})`);
+    if(cur) render(vw(views[step]));
+  }
+  function go(i,instant){
+    step=Math.max(0,Math.min(MAP_STEPS.length-1,i));
+    steps.querySelectorAll("button").forEach((b,j)=>b.setAttribute("aria-selected",j===step));
+    const st=MAP_STEPS[step]; cap.innerHTML=`<h3>${st.h}</h3><p>${st.p}</p>`;
+    document.getElementById("mapprev").disabled=step===0; document.getElementById("mapnext").disabled=step===MAP_STEPS.length-1;
+    const target=vw(views[step]);
+    if(timer) timer.stop();
+    const reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(!cur||instant||reduce){ render(target); return; }
+    const ip=d3.interpolateZoom(cur,target); const dur=Math.max(900,Math.min(2600,ip.duration*.75));
+    timer=d3.timer(el=>{ const t=Math.min(1,el/dur); render(ip(d3.easeCubicInOut(t))); if(t>=1) timer.stop(); });
+  }
+  steps.addEventListener("click",e=>{const b=e.target.closest("button[data-step]"); if(b) go(+b.dataset.step);});
+  document.getElementById("mapprev").onclick=()=>go(step-1);
+  document.getElementById("mapnext").onclick=()=>go(step+1);
+  if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){
+    const pt=d3.timer(el=>{ if(!document.body.contains(svgEl)){pt.stop();return;} const t=(el%2000)/2000; pulse.attr("r",8+t*22).style("opacity",1-t); });
+  }
+  size(); go(0,true);
+  window.addEventListener("resize",()=>{ if(document.body.contains(svgEl)) size(); });
+}
+
 let current = null;
 function route(){
   const h = (location.hash||"").slice(1);
@@ -656,6 +869,7 @@ function route(){
   if(view!==current){
     current=view;
     app.innerHTML = v ? villa(v) : home();
+    if(!v) initMap();
     document.title = v ? `Villa ${v.name} · ${PROJECT}` : PROJECT;
     if(v){ window.scrollTo(0,0); }
     else if(h && h!=="top"){ const t=document.getElementById(h); if(t) t.scrollIntoView(); else window.scrollTo(0,0); }
@@ -683,7 +897,7 @@ document.getElementById("menugrid").innerHTML = VILLAS.map((v,i)=>`<a href="#${v
   <div class="ph"><img src="${v.hero}" alt="Villa ${v.name}" loading="lazy"></div>
   <div class="nm"><small>Villa ${i+1} / 4</small>${v.name}</div>
   <div class="tg">${v.tagline}</div>
-  <div class="fx num">${v.facts.area} m² · ${v.facts.beds} háló · ${v.facts.baths} fürdőszoba + vendég-WC · ${v.facts.terr} m² terasz</div></a>`).join("");
+  <div class="fx"><span style="color:var(--accent)">${v.unique[0]}</span><br><span class="num">${v.facts.area} m² · ${v.facts.beds} hálószoba · ${v.facts.baths} fürdőszoba · 1 vendég-WC</span></div></a>`).join("");
 function openMenu(){ menu.hidden=false; menubtn.setAttribute("aria-expanded","true"); document.body.style.overflow="hidden"; document.getElementById("menuclose").focus(); }
 function closeMenu(){ if(menu.hidden) return; menu.hidden=true; menubtn.setAttribute("aria-expanded","false"); document.body.style.overflow=""; }
 menubtn.addEventListener("click",openMenu);
