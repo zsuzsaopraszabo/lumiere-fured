@@ -328,6 +328,42 @@ table.cmp .muted{color:var(--ink-soft);font-size:13px}
 .m-dot{fill:var(--ink-soft)}
 @media (prefers-reduced-motion: reduce){.m-pulse{display:none}}
 
+
+.floor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.floor figure{margin:0;display:grid;gap:8px}
+.floor button{all:unset;cursor:zoom-in;display:block;background:#fff;border:1px solid var(--rule);aspect-ratio:4/3}
+.floor button:focus-visible{outline:2px solid var(--lake);outline-offset:3px}
+.floor img{width:100%;height:100%;object-fit:contain;padding:10px}
+.floor figcaption{display:flex;justify-content:space-between;gap:12px;font-size:13px;letter-spacing:.02em;margin:0}
+@media (max-width:640px){.floor{grid-template-columns:1fr}}
+.floor figcaption a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;font-weight:500;white-space:nowrap}
+.poolbox{display:grid;grid-template-columns:6fr 5fr;gap:clamp(24px,5vw,72px);align-items:center}
+.poolbox figure{margin:0}.poolbox img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.poolbox h2{font-size:clamp(34px,4vw,56px)}.poolbox h2 i{font-style:italic;color:var(--accent)}
+.pooldl{display:grid;grid-template-columns:repeat(3,1fr);margin:22px 0;border-top:1px solid var(--ink)}
+.pooldl div{padding:12px 12px 12px 0}.pooldl div+div{padding-left:12px;border-left:1px solid var(--rule)}
+.pooldl dt{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--ink-soft)}
+.pooldl dd{margin:4px 0 0;font-family:var(--f-display);font-size:clamp(24px,2.6vw,34px)}
+.poolul{list-style:none;padding:0;margin:0}
+.poolul li{border-top:1px solid var(--rule);padding:9px 0;font-size:15.5px}
+@media (max-width:860px){.poolbox{grid-template-columns:1fr}}
+.tech{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink)}
+.tech>div{padding:24px 24px 28px 0;border-bottom:1px solid var(--rule);min-width:0}
+.tech>div:not(:nth-child(3n+1)){padding-left:24px;border-left:1px solid var(--rule)}
+.tech h3{font-size:26px;margin-bottom:12px}
+.tech ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.tech li{font-size:15px;color:var(--ink-soft);line-height:1.5;padding-left:16px;position:relative}
+.tech li::before{content:"";position:absolute;left:0;top:.7em;width:7px;height:1px;background:var(--champagne)}
+@media (max-width:980px){.tech{grid-template-columns:1fr 1fr}.tech>div:not(:nth-child(3n+1)){padding-left:0;border-left:0}.tech>div:nth-child(2n){padding-left:24px;border-left:1px solid var(--rule)}}
+@media (max-width:600px){.tech{grid-template-columns:1fr}.tech>div:nth-child(2n){padding-left:0;border-left:0}}
+.liftnote{margin-top:28px;border-left:2px solid var(--accent);padding-left:18px}
+.liftnote .eyebrow{color:var(--accent)}.liftnote p{font-family:var(--f-display);font-size:clamp(20px,2.2vw,28px);margin-top:6px}
+.sat{display:grid;gap:12px;margin-top:10px}
+.sathead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.sathead h3{font-size:clamp(26px,3vw,38px)}.sathead h3 i{font-style:italic}
+.satframe{position:relative;aspect-ratio:16/8;min-height:320px;background:var(--paper-2);border:1px solid var(--rule)}
+.satframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:1}
+.satfb{position:absolute;inset:auto 16px 16px 16px;font-size:13px;color:var(--ink-soft);z-index:0}
 /* lightbox */
 .lb[hidden]{display:none!important}
 .lb{position:fixed;inset:0;z-index:100;background:rgba(8,10,11,.94);display:grid;grid-template-rows:auto 1fr auto;padding:calc(env(safe-area-inset-top,0px) + 12px) max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 14px) max(16px,env(safe-area-inset-left,0px));color:#F2F2EE}
@@ -365,7 +401,7 @@ table.cmp .muted{color:var(--ink-soft);font-size:13px}
     <div class="inner">
       <div class="menu-top"><span class="logo">Lumière <i>Füred</i></span><button class="menubtn" id="menuclose">Bezárás ✕</button></div>
       <div class="menu-grid" id="menugrid"></div>
-      <div class="menu-links"><a href="#top">Főoldal</a><a href="#hely">A helyszín</a><a href="#terkep">Térkép</a><a href="#kozos">A közös nyelv</a><a href="#osszevetes">Összevetés</a><a href="#offplan">Off-plan</a><a href="#kapcsolat">Bemutató kérése</a></div>
+      <div class="menu-links"><a href="#top">Főoldal</a><a href="#hely">A helyszín</a><a href="#terkep">Térkép</a><a href="#kozos">A közös nyelv</a><a href="#muszaki">Műszaki tartalom</a><a href="#osszevetes">Összevetés</a><a href="#offplan">Off-plan</a><a href="#kapcsolat">Bemutató kérése</a></div>
     </div>
   </div>
 </div>
@@ -406,6 +442,8 @@ const VILLAS = [
    highlights:["Kétszintes belmagasság üvegoromzattal","Biokandalló a nappaliban","3 hálószoba, mindegyik saját fürdővel","Gardrób mindkét kerti szinti hálóhoz","Két teraszszint, összesen 90 m²","Saját medence a kertben"],
    facts:{area:"208", plot:"861", beds:"3", baths:"3", terr:"90", levels:"3 szint", garage:"34"},
    unique:["Az egyetlen háromszintes, osztott szintes elrendezés","23,8 m²-es galéria a nappali fölött, az üvegoromzat alatt","Olajzöld, kő és bronz belső világ"],
+   pool:{area:"12,5", vol:"16,25"}, cams:5, heat:"12,4", cool:"5,2",
+   floor:[{src:"plans/h3-plan-kerti.jpg",t:"Kerti szint (pince) alaprajza"},{src:"plans/h3-plan-foldszint.jpg",t:"Földszint és félszint alaprajza"},{src:"plans/h3-plan-galeria.jpg",t:"Galéria (tetőtér) alaprajza"},{src:"plans/h3-site.jpg",t:"Helyszínrajz, M 1:200"},{src:"plans/h3-pool.jpg",t:"Medenceterv"}],
    levels:[
      {name:"Földszint és félszint", total:"138,76", rooms:[["Nappali · étkező · konyha","41,98"],["Galéria / tetőtér","23,76"],["Hálószoba","14,26"],["Fürdő","4,35"],["Közlekedő","12,95"],["Előtér","5,61"],["Vendég WC","1,62"],["Garázs, 2 állás","34,23"]]},
      {name:"Kerti szint", total:"69,47", rooms:[["Hálószoba","19,66"],["Hálószoba","14,90"],["Gardrób","6,90"],["Fürdő","5,18"],["Fürdő","4,78"],["Mosókonyha","4,61"],["Gépészet","6,62"],["Közlekedő","6,82"]]},
@@ -424,6 +462,8 @@ const VILLAS = [
    highlights:["4 hálószoba-lakosztály, 4 fürdő","Vendéglakosztály a földszinten","Két teraszszint kültéri lépcsővel","15 m²-es tároló és külön mosókonyha","Belmagas nappali fa mennyezettel","Saját medence a kertben"],
    facts:{area:"227", plot:"863", beds:"4", baths:"4", terr:"100", levels:"2 szint", garage:"35"},
    unique:["4 hálószoba, mindegyik saját fürdőszobával: a legtöbb a kollekcióban","Külön vendéglakosztály a földszinten","15 m²-es tároló és külön mosókonyha"],
+   pool:{area:"15,0", vol:"19,5"}, cams:4, heat:"15,8", cool:"6,9",
+   floor:[{src:"plans/h4-plan-foldszint.jpg",t:"Földszint alaprajza"},{src:"plans/h4-plan-kerti.jpg",t:"Kerti szint (−1. szint) alaprajza"},{src:"plans/h4-site.jpg",t:"Helyszínrajz, M 1:200"},{src:"plans/h4-pool.jpg",t:"Medenceterv"}],
    levels:[
      {name:"Földszint", total:"108,92", rooms:[["Konyha · étkező","24,64"],["Nappali","15,29"],["Hálószoba","11,60"],["Gardrób","5,78"],["Fürdő","4,38"],["Előszoba","4,80"],["Zsilip","3,31"],["WC","1,99"],["Közlekedő","2,27"],["Garázs, 2 állás","34,86"]]},
      {name:"Kerti szint", total:"127,03", rooms:[["Hálószoba I.","14,38"],["Hálószoba II.","15,12"],["Hálószoba III.","14,95"],["Fürdő I.","5,23"],["Fürdő II.","3,97"],["Fürdő III.","6,46"],["Gardrób","3,90"],["Gardrób","4,36"],["Tároló","15,24"],["Mosókonyha","7,31"],["Gépészet","13,49"],["Közlekedő és lépcső","22,62"]]},
@@ -442,6 +482,8 @@ const VILLAS = [
    highlights:["Beépített lift a két szint között","Mesterlakosztály két gardróbbal","40 m²-es egylégterű nappali","Tolóajtók mindkét szinten","Kamra és zsilipes garázs-kapcsolat","Saját medence, külön medencegépészettel"],
    facts:{area:"234", plot:"863", beds:"3", baths:"2", terr:"89", levels:"2 szint · lift", garage:"34"},
    unique:["Beépített lift a két szint között","Mesterlakosztály két gardróbbal (22 m²) és 9 m²-es fürdővel","A legnagyobb hasznos alapterület: 234 m²"],
+   pool:{area:"23,4", vol:"30,4"}, cams:6, heat:"14,1", cool:"6,3",
+   floor:[{src:"plans/h5-plan-foldszint.jpg",t:"Földszint alaprajza"},{src:"plans/h5-plan-kerti.jpg",t:"Kerti szint (−1. szint) alaprajza"},{src:"plans/h5-site.jpg",t:"Helyszínrajz, M 1:200"},{src:"plans/h5-pool.jpg",t:"Medenceterv"}],
    levels:[
      {name:"Földszint", total:"104,36", rooms:[["Nappali · étkező · konyha","40,17"],["Közlekedő","14,40"],["Lépcsőtér","6,75"],["Lift","2,90"],["Kamra","2,09"],["Zsilip","2,29"],["Vendég WC","1,58"],["Garázs, 2 állás","34,18"]]},
      {name:"Kerti szint", total:"141,87", rooms:[["Mesterháló","18,72"],["Gardrób","14,33"],["Gardrób","8,06"],["Fürdő (mester)","9,00"],["Hálószoba","12,03"],["Hálószoba","12,03"],["Fürdő","10,59"],["Közlekedő","33,93"],["Lépcsőtér","7,86"],["Medencegépészet","15,32"]]},
@@ -454,12 +496,14 @@ const VILLAS = [
    cardTag:"gyöngyház · rózsaarany · ég",
    lede:"Perla felfelé nyit. A hálószobák az emeleten, az ég és a víz közé emelve kaptak helyet, a földszinten pedig a sorozat legtágasabb nappalija vár.",
    story:[
-     "A földszinten közel 31 m²-es nappali és 24 m²-es konyha-étkező fut össze márványszigettel és belmagas, rejtett fényű mennyezettel. A kőburkolatú terasz egy szintben folytatódik a kertben, a medence felé. A nyílászárók fa-alu szerkezetűek, háromrétegű üvegezéssel.",
+     "A földszinten közel 31 m²-es nappali és 24 m²-es konyha-étkező fut össze márványszigettel és belmagas, rejtett fényű mennyezettel. A kőburkolatú terasz egy szintben folytatódik a kertben, a medence felé. A kertre emelő-toló teraszajtók nyílnak.",
      "Az emeleten egy kis társalgó fogadja a lépcsőn érkezőt. Innen nyílik a szülői blokk: 18,5 m²-es háló, 11 m²-es gardrób és saját fürdő. Mellette két további szoba közös fürdővel. Mindhárom szoba délkeleti tájolású, saját teraszkapcsolattal. A belsőépítészeti terv gyöngyház-krém, rózsaarany és puha textúrák nyugalmára épül."
    ],
-   highlights:["Emeleti hálók délkeleti teraszokkal","55 m²-es nappali és konyha-étkező","Szülői blokk 11 m²-es gardróbbal","Fa-alu nyílászárók","A legnagyobb garázs: 39,5 m²","Saját medence, kőburkolatú teraszokkal"],
+   highlights:["Emeleti hálók délkeleti teraszokkal","55 m²-es nappali és konyha-étkező","Szülői blokk 11 m²-es gardróbbal","Emelő-toló teraszajtók","A legnagyobb garázs: 39,5 m²","Saját medence, kőburkolatú teraszokkal"],
    facts:{area:"225", plot:"863", beds:"3", baths:"2", terr:"115", levels:"2 szint", garage:"39,5"},
-   unique:["Az egyetlen emeletes ház: a hálószobák fent, az ég felé","A legnagyobb nappali–étkező (55 m²) és a legtöbb terasz (115 m²)","Fa-alu nyílászárók és a legnagyobb garázs (39,5 m²)"],
+   unique:["Az egyetlen emeletes ház: a hálószobák fent, az ég felé","A legnagyobb nappali–étkező (55 m²) és a legtöbb terasz (115 m²)","Emelő-toló teraszajtók és a legnagyobb garázs (39,5 m²)"],
+   pool:{area:"23,4", vol:"30,4"}, cams:6, heat:"13,8", cool:"6,4",
+   floor:[{src:"plans/h6-plan-foldszint.jpg",t:"Földszint alaprajza"},{src:"plans/h6-plan-emelet.jpg",t:"Emelet alaprajza"},{src:"plans/h6-site.jpg",t:"Helyszínrajz, M 1:200"},{src:"plans/h6-pool.jpg",t:"Medenceterv"}],
    levels:[
      {name:"Földszint", total:"135,95", rooms:[["Nappali","30,83"],["Konyha · étkező","23,80"],["Előtér","11,00"],["Fedett előtér","5,60"],["Lépcső","11,04"],["Közlekedő","5,32"],["Kamra","2,55"],["Gardrób","2,78"],["WC","3,53"],["Garázs, 2 állás","39,50"]]},
      {name:"Emelet", total:"88,89", rooms:[["Szülői háló","18,50"],["Gardrób","11,07"],["Fürdő I.","5,86"],["Hálószoba","12,81"],["Hálószoba","12,00"],["Fürdő II.","4,86"],["Társalgó","8,94"],["Lépcső és közlekedő","14,85"]]},
@@ -523,6 +567,10 @@ function home(){
     ["Vendég-WC", ()=>"1, külön"],
     ["Terasz", v=>"≈ "+v.facts.terr+" m²"],
     ["Szintek", v=>v.facts.levels],
+    ["Medence", v=>`${v.pool.area} m² vízfelület<br><span class='muted'>${v.pool.vol} m³, sós vizes, fűtött</span>`],
+    ["Lift", v=>v.id==="aurum"?"Igen, 450 kg / 6 fő":"–"],
+    ["Fűtés / hűtés méretezés", v=>`${v.heat} kW / ${v.cool} kW`],
+    ["Biztonság", v=>`${v.cams} IP kamera, riasztó, videó kaputelefon`],
     ["Ár", ()=>"Kérésre, a bemutatón"]
   ];
   return `
@@ -574,6 +622,10 @@ function home(){
           <div class="mapcap" id="mapcap" aria-live="polite"></div>
           <div class="mapnav"><button class="btn" id="mapprev">← Távolabb</button><button class="btn solid" id="mapnext">Közelebb →</button></div>
         </div>
+        <div class="sat">
+          <div class="sathead"><h3>Műholdas <i>nézet</i></h3><a class="btn" href="https://www.google.com/maps/@46.9667,17.8831,300m/data=!3m1!1e3" target="_blank" rel="noopener">Megnyitás a Google Térképen ↗</a></div>
+          <div class="satframe"><iframe title="Műholdas nézet: Lumière Füred, Kilátó utca" src="https://maps.google.com/maps?q=46.9667,17.8831&amp;t=k&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><p class="satfb">A műholdas térkép a feltöltött weboldalon jelenik meg. Itt a fenti gombbal nyitható meg.</p></div>
+        </div>
         <p class="mapnote">Térképadatok: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> közreműködők, Natural Earth. A távolságok légvonalban értendők. A telkek jelölése tájékoztató jellegű.</p>
       </div>
     </div>
@@ -588,11 +640,70 @@ function home(){
         <div><h3>Saját medence</h3><p>Minden telken kiviteli tervvel és uszodatechnológiával megtervezett medence.</p></div>
         <div><h3>Hőszivattyú</h3><p>Fűtés és melegvíz hőszivattyúval, külön kedvezményes árszabású mérővel.</p></div>
         <div><h3>Smart home</h3><p>Előre megtervezett okosotthon-rendszer, gyengeáramú rack és strukturált hálózat.</p></div>
-        <div><h3>Háromrétegű üvegezés</h3><p>Háromrétegű, hőszigetelt üvegezés a nagy üvegfelületeken is; Perla esetében fa-alu szerkezettel.</p></div>
+        <div><h3>Háromrétegű üvegezés</h3><p>Alu-fa nyílászárók, argontöltésű, háromrétegű Low-E üvegezéssel minden házban.</p></div>
         <div><h3>Időtálló anyagok</h3><p>Porotherm és vasbeton szerkezet, natúr kerámia cserép, PREFA alumínium bádogozás.</p></div>
         <div><h3>Kétállásos garázs</h3><p>Rámpás behajtó, garázs közvetlen belső kapcsolattal; 34–39,5 m².</p></div>
         <div><h3>Belsőépítészeti terv</h3><p>Minden villához teljes belsőépítészeti koncepció és berendezési terv tartozik.</p></div>
       </div>
+    </div>
+  </section>
+
+  <section class="s wrap rule-top" id="muszaki">
+    <div class="inner">
+      <div class="kicker"><span class="eyebrow">Műszaki tartalom</span><span class="line"></span></div>
+      <div class="galhead"><h2>Ami a falak mögött <i>van.</i></h2><p>A kiviteli tervek alapján, mind a négy villára érvényesen. Az eltéréseket külön jelöljük.</p></div>
+      <div class="tech">
+        <div><h3>Energia és gépészet</h3><ul>
+          <li>Közel nulla energiaigényű épület a hatályos energetikai rendelet szerint</li>
+          <li>Hőszivattyú: fűtés, hűtés és használati melegvíz egy rendszerben</li>
+          <li>Padlófűtés, a szobákban és a nappaliban mennyezeti fűtő-hűtő panelek</li>
+          <li>Helyiségenkénti hőmérséklet-szabályozás, igény szerint fan-coil</li>
+          <li>Központi, hővisszanyerős gépi szellőzés</li>
+          <li>Külön, kedvezményes tarifájú mérő a hőszivattyúnak</li>
+          <li>Méretezés: télen −13 °C kint, 22 °C bent; nyáron 26 °C bent</li>
+        </ul></div>
+        <div><h3>Szerkezet és szigetelés</h3><ul>
+          <li>Porotherm tégla és monolit vasbeton szerkezet</li>
+          <li>18 cm kőzetgyapot homlokzati hőszigetelés</li>
+          <li>25 cm kőzetgyapot a zárófödémen</li>
+          <li>35°-os magastető natúr kerámia cseréppel</li>
+          <li>PREFA állókorcos alumínium bádogozás, titáncink ereszek</li>
+          <li>Csapadékvíz-gyűjtés és szikkasztás a telken belül</li>
+          <li>Kőlap teraszburkolat állítható talpas (Impertek) rendszeren</li>
+        </ul></div>
+        <div><h3>Nyílászárók és árnyékolás</h3><ul>
+          <li>Háromrétegű, argontöltésű, Low-E bevonatú üvegezés</li>
+          <li>Nagyméretű, 2,5 m magas tolóajtók a teraszokra; Perlában emelő-toló ajtók</li>
+          <li>Schlotterer VORO típusú redőnyök elektromos mozgatással</li>
+          <li>Árnyékolás vezérlése KNX-ről, szél- és napsugárzás-érzékelővel a tetőn</li>
+          <li>Alu-fa szerkezetű nyílászárók minden házban</li>
+        </ul></div>
+        <div><h3>Smart home és biztonság</h3><ul>
+          <li>KNX épületautomatika, központi érintőkijelzős kezelő</li>
+          <li>Termosztát és jelenlétérzékelés helyiségenként</li>
+          <li>Paradox behatolásvédelem mozgás- és üvegtörés-érzékelőkkel</li>
+          <li>4–6 db Hikvision IP kamera hálózati rögzítővel</li>
+          <li>Videó kaputelefon, motoros tolókapu</li>
+          <li>Cat6 strukturált hálózat, WiFi access pointok; villámvédelem</li>
+        </ul></div>
+        <div><h3>Uszodatechnika</h3><ul>
+          <li>Feszített víztükrű, kerámia burkolatú vasbeton medence</li>
+          <li>Vízfelület villánként 12,5–23,4 m², térfogat 16–30 m³</li>
+          <li>Sós vizes elektrolízis, automata pH/Rx vegyszeradagolás</li>
+          <li>Önálló hőszivattyús medencefűtés</li>
+          <li>8 m³/h vízforgatás, zöldüveg szűrő, automata visszamosás</li>
+          <li>LED víz alatti világítás, automatikus vízpótlás</li>
+        </ul></div>
+        <div><h3>Kert és tereprendezés</h3><ul>
+          <li>Táj- és kertépítészeti kiviteli terv minden telekre</li>
+          <li>Telkenként 11 fa, köztük oszlopos atlasz cédrus, liliomfa, selyemmirtusz, ámbrafa, ezüst hárs</li>
+          <li>100–125 m² cserje- és évelőágyás telkenként</li>
+          <li>Automata öntözőrendszer esőztető és csepegtető körökkel</li>
+          <li>Legalább 60% zöldfelület, prémium gyepkeverék</li>
+          <li>Tereprendezés támfalakkal, a lejtőhöz igazítva</li>
+        </ul></div>
+      </div>
+      <div class="liftnote" style="--accent:var(--c-aurum)"><span class="eyebrow">Csak Aurumban</span><p>Hidraulikus személyfelvonó: 450 kg / 6 fő, 2 megálló, 0,5 m/s, zárt vasbeton aknában.</p></div>
     </div>
   </section>
 
@@ -706,6 +817,36 @@ function villa(v){
         <div class="plans">${v.plans.map((s,i)=>`<button data-lb="plans" data-i="${i}" aria-label="Berendezési terv ${i+1} megnyitása"><img src="${s}" alt="Villa ${v.name} berendezési terv ${i+1}" loading="lazy"></button>`).join("")}</div>
       </div>
       <div class="levels">${v.levels.map(l=>`<div class="level"><h3>${l.name}<span class="num">${l.total} m²</span></h3><ul>${l.rooms.map(([n,a])=>`<li><span>${n}</span><span>${a} m²</span></li>`).join("")}</ul></div>`).join("")}</div>
+    </div>
+  </section>
+
+  <section class="s wrap rule-top" id="alaprajzok">
+    <div class="inner">
+      <div class="galhead"><h2>Alaprajzok <i>és tervek</i></h2><p>A kiviteli tervdokumentáció lapjai. Kattintson a nagyításhoz; a „Teljes méret” új lapon nyitja meg a rajzot.</p></div>
+      <div class="floor">${v.floor.map((f,i)=>`<figure><button data-lb="floor" data-i="${i}" aria-label="${f.t} megnyitása nagyban"><img src="${f.src}" alt="Villa ${v.name}: ${f.t}" loading="lazy"></button><figcaption><span>${f.t}</span><a href="${f.src}" target="_blank" rel="noopener">Teljes méret ↗</a></figcaption></figure>`).join("")}</div>
+    </div>
+  </section>
+
+  <section class="s wrap rule-top" style="--accent:${v.color}">
+    <div class="inner poolbox">
+      <figure><img src="${v.extHero}" alt="Villa ${v.name} medence, látványterv" loading="lazy"></figure>
+      <div>
+        <div class="kicker" style="margin-bottom:16px"><span class="eyebrow">A medence</span></div>
+        <h2>Saját medence, <i>a tó felé.</i></h2>
+        <dl class="pooldl num">
+          <div><dt>Vízfelület</dt><dd>${v.pool.area} m²</dd></div>
+          <div><dt>Víztérfogat</dt><dd>${v.pool.vol} m³</dd></div>
+          <div><dt>Átlagos mélység</dt><dd>1,3 m</dd></div>
+        </dl>
+        <ul class="poolul">
+          <li>Feszített víztükrű, kerámia burkolatú vasbeton medence</li>
+          <li>Sós vizes, elektrolízises fertőtlenítés, automata pH/Rx adagolás</li>
+          <li>Önálló hőszivattyús vízfűtés</li>
+          <li>8 m³/h vízforgatás, zöldüveg szűrőtöltet, automata visszamosás</li>
+          <li>2 db LED víz alatti világítás, automatikus vízpótlás</li>
+          <li>Medencegépészet a terasz alatti gépházban</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -914,8 +1055,8 @@ let lastFocus=null;
 function show(){ lbimg.src=LB.list[LB.i]; lbimg.alt=LB.cap; lbcap.textContent=LB.cap; lbcount.textContent=`${LB.i+1} / ${LB.list.length}`; }
 function openLB(listName,i){
   const v=byId[current]; if(!v) return;
-  LB.list = listName==="int"?v.int:listName==="ext"?v.ext:v.plans;
-  LB.cap = `Villa ${v.name} · ${listName==="int"?"Belső terek":listName==="ext"?"Külső":"Berendezési terv"}`;
+  LB.list = listName==="int"?v.int:listName==="ext"?v.ext:listName==="floor"?v.floor.map(f=>f.src):v.plans;
+  LB.cap = `Villa ${v.name} · ${listName==="int"?"Belső terek":listName==="ext"?"Külső":listName==="floor"?"Alaprajzok és tervek":"Berendezési terv"}`;
   LB.i=i; lastFocus=document.activeElement; lb.hidden=false; document.body.style.overflow="hidden"; show(); document.getElementById("lbclose").focus();
 }
 function closeLB(){ lb.hidden=true; document.body.style.overflow=""; if(lastFocus) lastFocus.focus(); }
