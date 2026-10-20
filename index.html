@@ -443,7 +443,7 @@ const VILLAS = [
    facts:{area:"208", plot:"861", beds:"3", baths:"3", terr:"90", levels:"3 szint", garage:"34"},
    unique:["Az egyetlen háromszintes, osztott szintes elrendezés","23,8 m²-es galéria a nappali fölött, az üvegoromzat alatt","Olajzöld, kő és bronz belső világ"],
    pool:{area:"12,5", vol:"16,25"}, cams:5, heat:"12,4", cool:"5,2",
-   floor:[{src:"plans/h3-plan-kerti.jpg",t:"Kerti szint (pince) alaprajza"},{src:"plans/h3-plan-foldszint.jpg",t:"Földszint és félszint alaprajza"},{src:"plans/h3-plan-galeria.jpg",t:"Galéria (tetőtér) alaprajza"},{src:"plans/h3-site.jpg",t:"Helyszínrajz, M 1:200"},{src:"plans/h3-pool.jpg",t:"Medenceterv"}],
+   floor:[{src:"plans/h3-foldszint.svg",t:"Földszint és félszint"},{src:"plans/h3-kerti.svg",t:"Kerti szint"},{src:"plans/h3-galeria.svg",t:"Galéria"}],
    levels:[
      {name:"Földszint és félszint", total:"138,76", rooms:[["Nappali · étkező · konyha","41,98"],["Galéria / tetőtér","23,76"],["Hálószoba","14,26"],["Fürdő","4,35"],["Közlekedő","12,95"],["Előtér","5,61"],["Vendég WC","1,62"],["Garázs, 2 állás","34,23"]]},
      {name:"Kerti szint", total:"69,47", rooms:[["Hálószoba","19,66"],["Hálószoba","14,90"],["Gardrób","6,90"],["Fürdő","5,18"],["Fürdő","4,78"],["Mosókonyha","4,61"],["Gépészet","6,62"],["Közlekedő","6,82"]]},
@@ -463,7 +463,7 @@ const VILLAS = [
    facts:{area:"227", plot:"863", beds:"4", baths:"4", terr:"100", levels:"2 szint", garage:"35"},
    unique:["4 hálószoba, mindegyik saját fürdőszobával: a legtöbb a kollekcióban","Külön vendéglakosztály a földszinten","15 m²-es tároló és külön mosókonyha"],
    pool:{area:"15,0", vol:"19,5"}, cams:4, heat:"15,8", cool:"6,9",
-   floor:[{src:"plans/h4-plan-foldszint.jpg",t:"Földszint alaprajza"},{src:"plans/h4-plan-kerti.jpg",t:"Kerti szint (−1. szint) alaprajza"},{src:"plans/h4-site.jpg",t:"Helyszínrajz, M 1:200"},{src:"plans/h4-pool.jpg",t:"Medenceterv"}],
+   floor:[{src:"plans/h4-foldszint.svg",t:"Földszint"},{src:"plans/h4-kerti.svg",t:"Kerti szint"}],
    levels:[
      {name:"Földszint", total:"108,92", rooms:[["Konyha · étkező","24,64"],["Nappali","15,29"],["Hálószoba","11,60"],["Gardrób","5,78"],["Fürdő","4,38"],["Előszoba","4,80"],["Zsilip","3,31"],["WC","1,99"],["Közlekedő","2,27"],["Garázs, 2 állás","34,86"]]},
      {name:"Kerti szint", total:"127,03", rooms:[["Hálószoba I.","14,38"],["Hálószoba II.","15,12"],["Hálószoba III.","14,95"],["Fürdő I.","5,23"],["Fürdő II.","3,97"],["Fürdő III.","6,46"],["Gardrób","3,90"],["Gardrób","4,36"],["Tároló","15,24"],["Mosókonyha","7,31"],["Gépészet","13,49"],["Közlekedő és lépcső","22,62"]]},
@@ -483,7 +483,7 @@ const VILLAS = [
    facts:{area:"234", plot:"863", beds:"3", baths:"2", terr:"89", levels:"2 szint · lift", garage:"34"},
    unique:["Beépített lift a két szint között","Mesterlakosztály két gardróbbal (22 m²) és 9 m²-es fürdővel","A legnagyobb hasznos alapterület: 234 m²"],
    pool:{area:"23,4", vol:"30,4"}, cams:6, heat:"14,1", cool:"6,3",
-   floor:[{src:"plans/h5-plan-foldszint.jpg",t:"Földszint alaprajza"},{src:"plans/h5-plan-kerti.jpg",t:"Kerti szint (−1. szint) alaprajza"},{src:"plans/h5-site.jpg",t:"Helyszínrajz, M 1:200"},{src:"plans/h5-pool.jpg",t:"Medenceterv"}],
+   floor:[{src:"plans/h5-foldszint.svg",t:"Földszint"},{src:"plans/h5-kerti.svg",t:"Kerti szint"}],
    levels:[
      {name:"Földszint", total:"104,36", rooms:[["Nappali · étkező · konyha","40,17"],["Közlekedő","14,40"],["Lépcsőtér","6,75"],["Lift","2,90"],["Kamra","2,09"],["Zsilip","2,29"],["Vendég WC","1,58"],["Garázs, 2 állás","34,18"]]},
      {name:"Kerti szint", total:"141,87", rooms:[["Mesterháló","18,72"],["Gardrób","14,33"],["Gardrób","8,06"],["Fürdő (mester)","9,00"],["Hálószoba","12,03"],["Hálószoba","12,03"],["Fürdő","10,59"],["Közlekedő","33,93"],["Lépcsőtér","7,86"],["Medencegépészet","15,32"]]},
@@ -503,7 +503,7 @@ const VILLAS = [
    facts:{area:"225", plot:"863", beds:"3", baths:"2", terr:"115", levels:"2 szint", garage:"39,5"},
    unique:["Az egyetlen emeletes ház: a hálószobák fent, az ég felé","A legnagyobb nappali–étkező (55 m²) és a legtöbb terasz (115 m²)","Emelő-toló teraszajtók és a legnagyobb garázs (39,5 m²)"],
    pool:{area:"23,4", vol:"30,4"}, cams:6, heat:"13,8", cool:"6,4",
-   floor:[{src:"plans/h6-plan-foldszint.jpg",t:"Földszint alaprajza"},{src:"plans/h6-plan-emelet.jpg",t:"Emelet alaprajza"},{src:"plans/h6-site.jpg",t:"Helyszínrajz, M 1:200"},{src:"plans/h6-pool.jpg",t:"Medenceterv"}],
+   floor:[{src:"plans/h6-foldszint.svg",t:"Földszint"},{src:"plans/h6-emelet.svg",t:"Emelet"}],
    levels:[
      {name:"Földszint", total:"135,95", rooms:[["Nappali","30,83"],["Konyha · étkező","23,80"],["Előtér","11,00"],["Fedett előtér","5,60"],["Lépcső","11,04"],["Közlekedő","5,32"],["Kamra","2,55"],["Gardrób","2,78"],["WC","3,53"],["Garázs, 2 állás","39,50"]]},
      {name:"Emelet", total:"88,89", rooms:[["Szülői háló","18,50"],["Gardrób","11,07"],["Fürdő I.","5,86"],["Hálószoba","12,81"],["Hálószoba","12,00"],["Fürdő II.","4,86"],["Társalgó","8,94"],["Lépcső és közlekedő","14,85"]]},
@@ -822,8 +822,8 @@ function villa(v){
 
   <section class="s wrap rule-top" id="alaprajzok">
     <div class="inner">
-      <div class="galhead"><h2>Alaprajzok <i>és tervek</i></h2><p>A kiviteli tervdokumentáció lapjai. Kattintson a nagyításhoz; a „Teljes méret” új lapon nyitja meg a rajzot.</p></div>
-      <div class="floor">${v.floor.map((f,i)=>`<figure><button data-lb="floor" data-i="${i}" aria-label="${f.t} megnyitása nagyban"><img src="${f.src}" alt="Villa ${v.name}: ${f.t}" loading="lazy"></button><figcaption><span>${f.t}</span><a href="${f.src}" target="_blank" rel="noopener">Teljes méret ↗</a></figcaption></figure>`).join("")}</div>
+      <div class="galhead"><h2>Sematikus <i>alaprajzok</i></h2><p>Egyszerűsített alaprajzok a kiviteli tervek alapján, a helyiségek elrendezésének bemutatására. Nem méretarányos, tájékoztató jellegű ábrák.</p></div>
+      <div class="floor">${v.floor.map((f,i)=>`<figure><button data-lb="floor" data-i="${i}" aria-label="${f.t} alaprajz megnyitása nagyban"><img src="${f.src}" alt="Villa ${v.name}: ${f.t}, sematikus alaprajz" loading="lazy"></button><figcaption><span>${f.t}</span></figcaption></figure>`).join("")}</div>
     </div>
   </section>
 
@@ -1056,7 +1056,7 @@ function show(){ lbimg.src=LB.list[LB.i]; lbimg.alt=LB.cap; lbcap.textContent=LB
 function openLB(listName,i){
   const v=byId[current]; if(!v) return;
   LB.list = listName==="int"?v.int:listName==="ext"?v.ext:listName==="floor"?v.floor.map(f=>f.src):v.plans;
-  LB.cap = `Villa ${v.name} · ${listName==="int"?"Belső terek":listName==="ext"?"Külső":listName==="floor"?"Alaprajzok és tervek":"Berendezési terv"}`;
+  LB.cap = `Villa ${v.name} · ${listName==="int"?"Belső terek":listName==="ext"?"Külső":listName==="floor"?"Sematikus alaprajzok":"Berendezési terv"}`;
   LB.i=i; lastFocus=document.activeElement; lb.hidden=false; document.body.style.overflow="hidden"; show(); document.getElementById("lbclose").focus();
 }
 function closeLB(){ lb.hidden=true; document.body.style.overflow=""; if(lastFocus) lastFocus.focus(); }
