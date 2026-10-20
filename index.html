@@ -98,6 +98,11 @@ p{margin:0}
 .cover .inner{position:relative;z-index:2;min-height:min(92vh,880px);display:grid;grid-template-rows:auto 1fr auto;padding-block:28px 36px}
 .issue{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:12px}
 .mast{font-family:var(--f-mast);font-weight:400;font-size:clamp(60px,15vw,232px);line-height:.9;letter-spacing:.01em;margin-top:22px;text-transform:uppercase;display:inline-block;justify-self:start}
+.mast .sailf{height:.98em;width:auto;vertical-align:-.16em;margin-right:-.02em;overflow:visible}
+.sailf .mastline{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round}
+.sailf .sail1,.sailf .sail2{fill:currentColor;fill-opacity:.9;stroke:currentColor;stroke-width:1;stroke-linejoin:round}
+.sailf .sail2{fill-opacity:.62}
+.sailf .wave{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;opacity:.75}
 .mast .sub{display:block;text-align:right;font-family:"Pinyon Script","Snell Roundhand","Apple Chancery",cursive;font-weight:400;text-transform:none;font-size:clamp(46px,8.4vw,132px);letter-spacing:0;line-height:1;margin-top:-.08em;margin-right:-.04em}
 .coverlines{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:28px;align-items:end}
 .coverlines .lead{font-family:var(--f-display);font-size:clamp(26px,3.2vw,40px);line-height:1.1}
@@ -578,7 +583,7 @@ function home(){
     <img class="bg" src="${img(5,"int",5)}" alt="Panorámás nappali a Balaton-felvidékre nézve, látványterv">
     <div class="inner">
       <div class="issue eyebrow"><span>Vol. I · 2026 ősz</span><span>Balatonfüred · Tamás-hegy</span><span>4 villa · tervezés alatt</span></div>
-      <h1 class="mast fade">Lumière<span class="sub">Füred</span></h1>
+      <h1 class="mast fade" aria-label="Lumière Füred">Lumière<span class="sub" aria-hidden="true"><svg class="sailf" viewBox="0 0 72 104" role="img" aria-label="F"><path class="mastline" d="M30 3 C28 32 25 60 21 90"/><path class="sail1" d="M30.5 6 C44 6 57 8 68 12 C55 20 41 29 27.6 38 Z"/><path class="sail2" d="M27 45 C37 46 47 48 55 51 C45 56 34 62 24.4 68 Z"/><path class="wave" d="M2 95 C10 90 16 90 22 94 C28 98 34 98 40 94 C46 90 52 90 58 94"/></svg>üred</span></h1>
       <div class="coverlines">
         <p class="lead">Fényárban úszó panorámás villaházak<br><i>a füredi domb tetején.</i></p>
         <p class="small hide-s"><strong>A kollekció</strong>Oliva, Ambra, Aurum és Perla: négy egyedi tervezésű ház, közös építészeti nyelvvel és négy különböző karakterrel.</p>
